@@ -7,6 +7,27 @@ const Cadastro = () => {
   const [estoque, setEstoque] = useState("");
   const [categoria, setCategoria] = useState("");
   const [produtos, setProdutos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [touched, setTouched] = useState({
+    nome: false,
+    preco: false,
+    estoque: false,
+    categoria: false,
+  });
+
+  const erros = {
+    nome: nome.trim === "",
+    preco: preco < 0,
+    estoque: estoque < 0,
+    categoria: categoria.trim() === "",
+  };
+
+  const formularioValidado =
+    !erros.nome && !erros.preco && !erros.estoque && !erros.categoria;
+
+  function handelBlur(campo) {
+    setTouched((prev) => ({ ...prev, [campo]: true }));
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -26,6 +47,7 @@ const Cadastro = () => {
 
   async function listarTodos() {
     try {
+      setLoading(true);
       const response = await fetch(`http://localhost:3000/produtos`);
       if (!response.ok) {
         throw new Error(`Erro ao criar o produto !`);
@@ -34,6 +56,8 @@ const Cadastro = () => {
       setProdutos(data);
     } catch (erro) {
       alert(`Não foi possível mostrar os produtos !`, erro);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -54,6 +78,8 @@ const Cadastro = () => {
       return data;
     } catch (erro) {
       alert(`Não foi possível criar o produto`, erro);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -72,9 +98,12 @@ const Cadastro = () => {
             type="text"
             placeholder="Digite o nome"
             value={nome}
-            required
             onChange={(e) => setNome(e.target.value)}
+            onblur={() => handelBlur("Nome")}
           />
+          {erros.nome && touched.nome && (
+            <span>⚠ O campo deve ser preenchido</span>
+          )}
         </label>
         <label>
           Preço
@@ -83,9 +112,12 @@ const Cadastro = () => {
             type="number"
             placeholder="Digite o preço"
             value={preco}
-            required
             onChange={(e) => setPreco(e.target.value)}
+            onblur={() => handelBlur("preco")}
           />
+          {erros.preco && touched.preco && (
+            <span>⚠ O campo deve ser preenchido e maior que 0</span>
+          )}
         </label>
         <label>
           Estoque
@@ -94,9 +126,12 @@ const Cadastro = () => {
             type="number"
             placeholder="Digite a quantidade em estoque"
             value={estoque}
-            required
             onChange={(e) => setEstoque(e.target.value)}
+            onblur={() => handelBlur("estoque")}
           />
+          {erros.estoque && touched.estoque && (
+            <span>⚠ O campo deve ser preenchido e maior que 0</span>
+          )}
         </label>
         <label>
           Categoria
@@ -105,16 +140,21 @@ const Cadastro = () => {
             type="text"
             placeholder="Digite o nome da categoria"
             value={categoria}
-            required
             onChange={(e) => setCategoria(e.target.value)}
+            onblur={() => handelBlur("categoria")}
           />
+          {erros.categoria && touched.categoria && (
+            <span>⚠ O campo deve ser preenchido</span>
+          )}
         </label>
         <input
           type="submit"
           className={styles.btnSubmit}
           placeholder="Cadastrar"
+          disabled={!formularioValidado}
         />
       </form>
+
       <section>
         <table>
           <thead>
@@ -129,6 +169,8 @@ const Cadastro = () => {
           </thead>
 
           <tbody>
+            {loading && <div className={styles.loading}></div>}
+
             {produtos.map((p, i) => (
               <tr key={i}>
                 <td>{p.id}</td>
