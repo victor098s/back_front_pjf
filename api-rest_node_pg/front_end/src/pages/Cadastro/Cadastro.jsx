@@ -8,6 +8,8 @@ const Cadastro = () => {
   const [categoria, setCategoria] = useState("");
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [editar, setEditar] = useState(null);
+
   const [touched, setTouched] = useState({
     nome: false,
     preco: false,
@@ -16,16 +18,16 @@ const Cadastro = () => {
   });
 
   const erros = {
-    nome: nome.trim === "",
-    preco: preco < 0,
-    estoque: estoque < 0,
+    nome: nome.trim() === "",
+    preco: Number(preco) <= 0,
+    estoque: Number(estoque) <= 0,
     categoria: categoria.trim() === "",
   };
 
   const formularioValidado =
     !erros.nome && !erros.preco && !erros.estoque && !erros.categoria;
 
-  function handelBlur(campo) {
+  function handleBlur(campo) {
     setTouched((prev) => ({ ...prev, [campo]: true }));
   }
 
@@ -39,10 +41,27 @@ const Cadastro = () => {
       categoria,
     };
 
-    const produtoCriado = await criar(produto);
-    setProdutos([...produtos, produtoCriado]);
+    if (editar) {
+      await atualizar(editar, produto);
+    } else {
+      await criar(produto);
+    }
 
-    (setNome(""), setPreco(""), setEstoque(""), setCategoria(""));
+    limparForm();
+    listarTodos();
+  }
+
+  function limparForm() {
+    (setNome(""),
+      setPreco(""),
+      setEstoque(""),
+      setCategoria(""),
+      setTouched({
+        nome: false,
+        preco: false,
+        estoque: false,
+        categoria: false,
+      }));
   }
 
   async function listarTodos() {
@@ -75,12 +94,62 @@ const Cadastro = () => {
       }
 
       const data = await response.json();
+      alert("Produto cadastrado com sucesso ✅");
       return data;
     } catch (erro) {
       alert(`Não foi possível criar o produto`, erro);
     } finally {
       setLoading(false);
     }
+  }
+
+  async function atualizar(id, dados) {
+    try {
+      const response = await fetch(`http://localhost:3000/produtos/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar o produto");
+      }
+
+      const data = await response.json();
+
+      alert("Produto atualizado com sucesso");
+    } catch (erro) {
+      throw new Error("Erro ao atualizar o produto", erro);
+    }
+  }
+
+  function editarProduto(produto) {
+    setEditar(produto.id);
+    setNome(produto.nome);
+    setPreco(produto.preco);
+    setEstoque(produto.estoque);
+    setCategoria(produto.categoria);
+  }
+
+  async function excluirProduto(id) {
+    try {
+      const response = await fetch(`http://localhost:3000/produtos/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Erro ao deletar o produto ❌");
+      }
+
+      const data = response.json()
+      listarTodos()
+
+    } catch (erro) {
+      throw new Error("Erro ao deletar o produto ❌", erro);
+    }
+  }
+
+  function classInput(campo) {
+    return erros[campo] && touched[campo] ? styles.inputErro : styles.input;
   }
 
   useEffect(() => {
@@ -94,57 +163,65 @@ const Cadastro = () => {
         <label>
           Nome
           <input
-            className={styles.input}
+            className={classInput("nome")}
             type="text"
             placeholder="Digite o nome"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            onblur={() => handelBlur("Nome")}
+            onBlur={() => handleBlur("nome")}
           />
           {erros.nome && touched.nome && (
-            <span>⚠ O campo deve ser preenchido</span>
+            <span className={styles.msgErro}>
+              ⚠ O campo deve ser preenchido
+            </span>
           )}
         </label>
         <label>
           Preço
           <input
-            className={styles.input}
+            className={classInput("preco")}
             type="number"
             placeholder="Digite o preço"
             value={preco}
             onChange={(e) => setPreco(e.target.value)}
-            onblur={() => handelBlur("preco")}
+            onBlur={() => handleBlur("preco")}
           />
           {erros.preco && touched.preco && (
-            <span>⚠ O campo deve ser preenchido e maior que 0</span>
+            <span className={styles.msgErro}>
+              ⚠ O campo deve ser preenchido e maior que 0
+            </span>
           )}
         </label>
         <label>
           Estoque
           <input
-            className={styles.input}
+            className={classInput("estoque")}
             type="number"
             placeholder="Digite a quantidade em estoque"
             value={estoque}
             onChange={(e) => setEstoque(e.target.value)}
-            onblur={() => handelBlur("estoque")}
+            onBlur={() => handleBlur("estoque")}
           />
           {erros.estoque && touched.estoque && (
-            <span>⚠ O campo deve ser preenchido e maior que 0</span>
+            <span className={styles.msgErro}>
+              ⚠ O campo deve ser preenchido e maior que 0
+            </span>
           )}
         </label>
         <label>
           Categoria
           <input
-            className={styles.input}
+            className={classInput("categoria")}
             type="text"
             placeholder="Digite o nome da categoria"
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
-            onblur={() => handelBlur("categoria")}
+            onBlur={() => handleBlur("categoria")}
           />
           {erros.categoria && touched.categoria && (
-            <span>⚠ O campo deve ser preenchido</span>
+            <span className={styles.msgErro}>
+              ⚠ O campo deve ser preenchido
+            </span>
           )}
         </label>
         <input
@@ -169,7 +246,13 @@ const Cadastro = () => {
           </thead>
 
           <tbody>
-            {loading && <div className={styles.loading}></div>}
+            {loading && (
+              <tr>
+                <td>
+                  <div className={styles.loading}></div>
+                </td>
+              </tr>
+            )}
 
             {produtos.map((p, i) => (
               <tr key={i}>
@@ -179,6 +262,15 @@ const Cadastro = () => {
                 <td>{p.estoque}</td>
                 <td>{p.categoria}</td>
                 <td>{p.criado_em}</td>
+                <td onClick={() => editarProduto(p)} className={styles.editar}>
+                  Editar ✏️
+                </td>
+                <td
+                  onClick={() => excluirProduto(p.id)}
+                  className={styles.excluir}
+                >
+                  Excluir 🗑️
+                </td>
               </tr>
             ))}
           </tbody>

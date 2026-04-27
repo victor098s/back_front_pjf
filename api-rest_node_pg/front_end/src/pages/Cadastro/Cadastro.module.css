@@ -32,6 +32,38 @@ label {
 .input:focus {
   outline: 3px solid #4363d7aa;
 }
+.inputErro {
+  width: 280px;
+  height: 32px;
+  border-radius: 8px;
+  outline: none;
+  padding-left: 10px;
+  border: 3px #ff4444 solid;
+  transition: outline 0.3s ease-in-out;
+  animation: shake 1.5s ease-in-out;
+}
+.inputErro:focus {
+  outline: 3px solid #d74343aa;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}
 
 .btnSubmit {
   width: 280px;
@@ -47,7 +79,12 @@ label {
     background-color 0.3s;
 }
 
-.btnSubmit:hover {
+.btnSubmit:disabled{
+  background-color: #979ba8;
+  cursor:not-allowed;
+}
+
+.btnSubmit:hover:is(:not) {
   transform: translateY(-5px);
   background-color: rgb(37, 37, 173);
 }
@@ -58,6 +95,7 @@ table {
   min-width: 700px;
   border-radius: 8px;
   color: rgb(40, 37, 37);
+  margin-bottom: 2rem;
 }
 
 table th {
@@ -65,7 +103,7 @@ table th {
   background-color: #7c96f2;
   padding-top: 10px;
   padding-left: 2px;
-  border-radius: 8px;
+
   color: #ffffff;
 }
 
@@ -107,4 +145,32 @@ section {
   80% {
     transform: rotate(360deg);
   }
+}
+
+.msgErro {
+  font-size: 12px;
+  color: #ff3838;
+}
+
+.sucessCadastro{
+  background-color: #fff;
+  width: 500px;
+  height: 500px;
+  border-radius: 7px;
+  color: #1f1f20;
+  position: absolute;
+}
+
+.sucessCadastro .fechar{
+  display: flex;
+  justify-content: center;
+}
+
+.editar{
+  background-color: rgb(0, 215, 14);
+  cursor: pointer;
+}
+.excluir{
+  background-color: rgb(255, 34, 34);
+  cursor: pointer;
 }

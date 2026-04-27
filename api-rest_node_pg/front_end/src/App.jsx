@@ -1,5 +1,5 @@
 import "./App.css";
-import Cadastro from "./pages/Cadastro";
+import Cadastro from "./pages/Cadastro/Cadastro";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 function App() {
