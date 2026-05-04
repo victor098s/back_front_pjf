@@ -1,24 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
 
-/* RESET LOCAL (opcional) */
-.app {
-  height: 100vh;
-  background: url('../../assets/loja.jpg') no-repeat center center/cover;
-  background-attachment: fixed;
-  color: white;
-  position: relative;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* OVERLAY */
+html, body {
+  height: 100%;
+}
+
+/* CONTAINER PRINCIPAL */
+.app {
+  height: 100vh;
+  width: 100%;
+  background: url('../../assets/loja.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* OVERLAY (efeito cinza + blur) */
 .app::before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(80,80,80,0.25);
-  backdrop-filter: blur(8px);
+  inset: 0;
+  background: rgba(60, 60, 60, 0.35);
+  backdrop-filter: blur(6px);
   z-index: 0;
+}
+
+/* HEADER */
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  background: rgba(80, 80, 80, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+/* LOGO */
+.logo {
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.logo span {
+  opacity: 0.4;
+}
+
+/* NAV */
+.nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #eee;
+  font-size: 14px;
+}
+
+.contatoBtn {
+  border: 1px solid #ddd;
+  padding: 8px 18px;
+  border-radius: 25px;
 }
 
 /* HERO */
@@ -30,29 +80,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 40px;
 }
 
 /* TÍTULO */
 .title {
   font-size: 95px;
   font-weight: 200;
-  letter-spacing: 1px;
 }
 
 .title span {
   opacity: 0.35;
 }
 
-/* TEXTO */
-.subtitle {
-  text-align: center;
-  color: #eee;
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-/* DIVIDER */
+/* DIVISOR */
 .divider {
   display: flex;
   align-items: center;
@@ -60,14 +100,17 @@
   margin: 15px 0;
 }
 
-.divider div {
+.line {
   width: 200px;
   height: 1px;
   background: rgba(255,255,255,0.4);
 }
 
-.divider i {
-  font-size: 14px;
+/* TEXTO */
+.subtitle {
+  text-align: center;
+  color: #eee;
+  font-size: 18px;
 }
 
 /* CARDS */
@@ -88,22 +131,6 @@
   transition: 0.3s;
 }
 
-.card i {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.card h3 {
-  font-weight: 400;
-}
-
-.card span {
-  display: block;
-  margin-top: 5px;
-  font-size: 14px;
-  color: #eee;
-}
-
 .card:hover {
   transform: translateY(-6px);
   background: rgba(255,255,255,0.15);
@@ -113,9 +140,4 @@
 .scroll {
   margin-top: 40px;
   text-align: center;
-  color: #eee;
-}
-
-.scroll i {
-  font-size: 20px;
 }
