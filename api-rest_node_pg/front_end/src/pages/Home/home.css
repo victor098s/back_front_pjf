@@ -14,7 +14,7 @@
   background-attachment: fixed;
   color: white;
   position: relative;
-}
+}    
 
 /* OVERLAY */
 .app::before {
