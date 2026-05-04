@@ -5,7 +5,7 @@ export default function Delivery() {
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/produtos&quot")
+     fetch(`http://localhost:3000/produtos`)
       .then((res) => res.json())
       .then((data) => setProdutos(data))
       .catch((err) => console.error(err));
