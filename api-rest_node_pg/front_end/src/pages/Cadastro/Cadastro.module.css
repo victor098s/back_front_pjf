@@ -77,9 +77,9 @@ label {
     background-color 0.3s;
 }
 
-.btnSubmit:disabled {
+.btnSubmit:disabled{
   background-color: #979ba8;
-  cursor: not-allowed;
+  cursor:not-allowed;
 }
 
 .btnSubmit:hover:is(:not) {
@@ -121,26 +121,17 @@ section {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #fbf6f6;
+  border: 10px solid rgb(206, 206, 206);
   animation: rotate 1s linear infinite;
   border-top: 10px solid #5479ff;
 }
 
 @keyframes rotate {
-  0%,
-  100% {
+  from {
     transform: rotate(0);
   }
-  20% {
-    transform: rotate(90deg);
-  }
-  40% {
-    transform: rotate(180deg);
-  }
-  60% {
-    transform: rotate(270deg);
-  }
-  80% {
+
+  to {
     transform: rotate(360deg);
   }
 }
@@ -150,7 +141,7 @@ section {
   color: #ff3838;
 }
 
-.sucessCadastro {
+.sucessCadastro{
   background-color: #fff;
   width: 500px;
   height: 500px;
@@ -159,18 +150,17 @@ section {
   position: absolute;
 }
 
-.sucessCadastro .fechar {
+.sucessCadastro .fechar{
   display: flex;
   justify-content: center;
 }
 
-.editar {
+.editar{
   background-color: rgb(73, 255, 85);
   cursor: pointer;
   color: #2e2c2c;
 }
-.excluir {
+.excluir{
   background-color: rgb(255, 62, 62);
   cursor: pointer;
-  color: #2e2c2c;
 }
