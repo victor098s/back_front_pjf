@@ -1,5 +1,6 @@
 import "./App.css";
-import Cadastro from "./pages/Cadastro";
+import Cadastro from "./pages/Cadastro/Cadastro";
+import SobreNos from "./pages/About/sobrenos";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -23,11 +24,19 @@ function App() {
         >
           Cadastro
         </NavLink>
+
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Sobre nós
+        </NavLink>
       </div>
 
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/about" element={<SobreNos />} />
       </Routes>
 
       <footer>&Copy, Todos os direitos reservados </footer>
