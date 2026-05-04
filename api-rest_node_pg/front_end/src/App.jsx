@@ -1,6 +1,7 @@
 import "./App.css";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import SobreNos from "./pages/About/sobrenos";
+import Delivery from "./pages/Delivery/delivery";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -31,12 +32,20 @@ function App() {
         >
           Sobre nós
         </NavLink>
+
+        <NavLink
+          to="/delivery"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Delivery
+        </NavLink>
       </div>
 
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/about" element={<SobreNos />} />
+        <Route path="/delivery" element={<Delivery />} />
       </Routes>
 
       <footer>&Copy, Todos os direitos reservados </footer>
