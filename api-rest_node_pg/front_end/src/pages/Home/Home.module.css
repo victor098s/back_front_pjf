@@ -1,20 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
 
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
-
+/* RESET LOCAL (opcional) */
 .app {
   height: 100vh;
   background: url('../../assets/loja.jpg') no-repeat center center/cover;
   background-attachment: fixed;
   color: white;
   position: relative;
-}    
+  font-family: 'Montserrat', sans-serif;
+}
 
 /* OVERLAY */
 .app::before {
@@ -27,47 +21,11 @@
   z-index: 0;
 }
 
-/* HEADER */
-header {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 60px;
-  background: rgba(120,120,120,0.35);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: 400;
-}
-
-.logo span {
-  opacity: 0.35;
-}
-
-/* NAV */
-nav a {
-  margin-left: 30px;
-  text-decoration: none;
-  color: #eee;
-  font-size: 14px;
-}
-
-.btn {
-  border: 1px solid #ddd;
-  padding: 8px 18px;
-  border-radius: 25px;
-}
-
 /* HERO */
 .hero {
   position: relative;
   z-index: 2;
-  height: calc(100vh - 90px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -75,15 +33,23 @@ nav a {
   padding-top: 40px;
 }
 
-/* TITLE */
-.hero h1 {
+/* TÍTULO */
+.title {
   font-size: 95px;
   font-weight: 200;
   letter-spacing: 1px;
 }
 
-.hero h1 span {
+.title span {
   opacity: 0.35;
+}
+
+/* TEXTO */
+.subtitle {
+  text-align: center;
+  color: #eee;
+  margin-top: 10px;
+  font-size: 18px;
 }
 
 /* DIVIDER */
@@ -102,14 +68,6 @@ nav a {
 
 .divider i {
   font-size: 14px;
-}
-
-/* TEXT */
-.hero p {
-  text-align: center;
-  color: #eee;
-  margin-top: 10px;
-  font-size: 18px;
 }
 
 /* CARDS */
