@@ -63,7 +63,7 @@ Produtos de qualidade, frescos e baratos.
         <form onSubmit={handleSubmit} className="form">
           <input
             type="text"
-            placeholder="wiss mall"
+            placeholder="Seu nome"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
