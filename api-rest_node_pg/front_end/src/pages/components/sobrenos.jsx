@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./sobrenos.css";
+import "../components/sobrenos.css";
 
 const SobreNos = () => {
   const [nome, setNome] = useState("");
