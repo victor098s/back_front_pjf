@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className={styles.app}>
 
-      {/* HEADER */}
+      {/* HEADER (ÚNICO) */}
       <header className={styles.header}>
         <div className={styles.logo}>
           wiss <span>mall</span>
@@ -22,19 +22,15 @@ function Home() {
       </header>
 
       {/* HERO */}
-      <section className={styles.hero}>
+      <main className={styles.hero}>
         
         <h1 className={styles.title}>
           wiss <span>mall</span>
         </h1>
 
-        {/* LINHA + CADEADO */}
         <div className={styles.divider}>
           <div className={styles.line}></div>
-
-          {/* ícone (usa font awesome no index.html) */}
           <i className="fa-solid fa-lock"></i>
-
           <div className={styles.line}></div>
         </div>
 
@@ -43,7 +39,6 @@ function Home() {
           e muito mais!
         </p>
 
-        {/* CARDS */}
         <div className={styles.cards}>
 
           <div className={styles.card}>
@@ -72,13 +67,12 @@ function Home() {
 
         </div>
 
-        {/* SCROLL */}
         <div className={styles.scroll}>
           <i className="fa-solid fa-angle-down"></i>
           <p>role para baixo</p>
         </div>
 
-      </section>
+      </main>
     </div>
   );
 }

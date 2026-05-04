@@ -23,7 +23,7 @@ html, body {
   overflow: hidden;
 }
 
-/* OVERLAY (efeito cinza + blur) */
+/* OVERLAY */
 .app::before {
   content: "";
   position: absolute;
@@ -33,12 +33,12 @@ html, body {
   z-index: 0;
 }
 
-/* HEADER */
+/* HEADER (ÚNICO) */
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,7 +73,7 @@ html, body {
 
 /* HERO */
 .hero {
-  min-height: calc(100vh - 90px);
+  height: 100vh; /* CORREÇÃO PRINCIPAL */
   position: relative;
   z-index: 2;
   display: flex;
