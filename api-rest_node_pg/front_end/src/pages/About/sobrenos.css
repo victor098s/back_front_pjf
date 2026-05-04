@@ -1,0 +1,58 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sobre {
+  margin-bottom: 25px;
+}
+
+.sobre h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sobre p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.contato {
+  margin-top: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input,
+.form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form button {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #1e7e34;
+}
