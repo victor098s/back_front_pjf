@@ -116,8 +116,7 @@ const Cadastro = () => {
         throw new Error("Erro ao atualizar o produto");
       }
 
-      
-        const data = await response.json();
+      const data = await response.json();
 
       alert("Produto atualizado com sucesso");
     } catch (erro) {
@@ -273,7 +272,14 @@ const Cadastro = () => {
                   Editar ✏️
                 </td>
                 <td
-                  onClick={() => excluirProduto(p.id)}
+                  onClick={() => {
+                    const confirmar = window.confirm(
+                      "Deseja excluir este produto ?",
+                    );
+                    if (confirmar) {
+                      excluirProduto(p.id);
+                    }
+                  }}
                   className={styles.excluir}
                 >
                   Excluir 🗑️
