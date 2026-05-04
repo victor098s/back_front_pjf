@@ -41,7 +41,7 @@ const Cadastro = () => {
       categoria,
     };
 
-    if (editar) {
+    if (editar !== null) {
       await atualizar(editar, produto);
     } else {
       await criar(produto);
@@ -56,6 +56,7 @@ const Cadastro = () => {
       setPreco(""),
       setEstoque(""),
       setCategoria(""),
+      setEditar(null),
       setTouched({
         nome: false,
         preco: false,
@@ -115,7 +116,8 @@ const Cadastro = () => {
         throw new Error("Erro ao atualizar o produto");
       }
 
-      const data = await response.json();
+      
+        const data = await response.json();
 
       alert("Produto atualizado com sucesso");
     } catch (erro) {
@@ -140,9 +142,8 @@ const Cadastro = () => {
         throw new Error("Erro ao deletar o produto ❌");
       }
 
-      const data = response.json()
-      listarTodos()
-
+      const data = response.json();
+      listarTodos();
     } catch (erro) {
       throw new Error("Erro ao deletar o produto ❌", erro);
     }
@@ -262,7 +263,13 @@ const Cadastro = () => {
                 <td>{p.estoque}</td>
                 <td>{p.categoria}</td>
                 <td>{p.criado_em}</td>
-                <td onClick={() => editarProduto(p)} className={styles.editar}>
+                <td
+                  onClick={() => {
+                    editarProduto(p);
+                    setProdutoEmEdicao(true);
+                  }}
+                  className={styles.editar}
+                >
                   Editar ✏️
                 </td>
                 <td
