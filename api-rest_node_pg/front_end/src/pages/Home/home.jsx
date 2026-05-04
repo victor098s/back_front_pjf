@@ -1,5 +1,4 @@
-import styles from "./home.module.css";
-import { NavLink } from "react-router-dom";
+import styles from "./Home.module.css";
 
 function Home() {
   return (
@@ -40,12 +39,8 @@ function Home() {
         </p>
 
         <div className={styles.cards}>
-
-          <div className={styles.card}>
-            <i className="fa-solid fa-phone"></i>
-            <h3>Contato</h3>
-            <span>Fale conosco</span>
-          </div>
+          
+         
 
           <div className={styles.card}>
             <i className="fa-solid fa-user"></i>
