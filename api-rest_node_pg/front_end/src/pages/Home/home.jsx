@@ -22,11 +22,7 @@ function Home() {
 
         <div className={styles.cards}>
           
-          <div className={styles.card}>
-            <i className="fa-solid fa-phone"></i>
-            <h3>Contato</h3>
-            <span>Fale conosco</span>
-          </div>
+         
 
           <div className={styles.card}>
             <i className="fa-solid fa-user"></i>
@@ -48,10 +44,7 @@ function Home() {
 
         </div>
 
-        <div className={styles.scroll}>
-          <i className="fa-solid fa-angle-down"></i>
-          <p>role para baixo</p>
-        </div>
+      
 
       </section>
     </div>
