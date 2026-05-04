@@ -1,7 +1,7 @@
 import "./App.css";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import SobreNos from "./pages/About/sobrenos";
-import Delivery from "./pages/Delivery/delivery";
+import Busca from "./pages/Busca/busca";
 import Home from "./pages/Home/Home";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
@@ -37,10 +37,10 @@ function App() {
           </NavLink>
 
           <NavLink
-            to="/delivery"
+            to="/busca"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            Delivery
+            Busca
           </NavLink>
         </div>
       </header>
@@ -49,7 +49,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/busca" element={<Busca />} />
           <Route path="/about" element={<SobreNos />} />
         </Routes>
       </main>
