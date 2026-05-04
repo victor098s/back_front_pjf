@@ -40,8 +40,9 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* SEÇÕES */
-.sobre {
+/* SEÇÕES PADRÃO */
+.sobre,
+.contato {
   display: grid;
   grid-template-columns: 180px 1fr;
   gap: 30px;
@@ -52,12 +53,13 @@ body::before {
 }
 
 /* REMOVE LINHA DO ÚLTIMO */
-.sobre:last-of-type {
+.contato {
   border-bottom: none;
 }
 
 /* TÍTULOS */
-.sobre h2 {
+.sobre h2,
+.contato h2 {
   font-size: 17px;
   color: #bfc7d5;
   font-weight: 600;
@@ -66,7 +68,8 @@ body::before {
 }
 
 /* LINHA DISCRETA */
-.sobre h2::after {
+.sobre h2::after,
+.contato h2::after {
   content: "";
   display: block;
   width: 30px;
@@ -84,32 +87,18 @@ body::before {
   max-width: 600px;
 }
 
-/* CONTATO */
-.contato {
-  margin-top: 70px;
-  text-align: center;
-}
-
-/* TÍTULO CONTATO */
-.contato h2 {
-  font-size: 22px;
-  margin-bottom: 25px;
-  font-weight: 500;
-}
-
-/* FORM */
+/* FORM AGORA IGUAL AO PADRÃO */
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 15px;
+  max-width: 600px;
 }
 
 /* INPUTS */
 .form input,
 .form textarea {
   width: 100%;
-  max-width: 420px;
   padding: 12px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.1);
@@ -149,6 +138,7 @@ body::before {
   font-size: 14px;
   cursor: pointer;
   transition: 0.25s;
+  align-self: flex-start;
 }
 
 /* HOVER */
@@ -158,16 +148,19 @@ body::before {
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
-  .sobre {
+  .sobre,
+  .contato {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .sobre h2 {
+  .sobre h2,
+  .contato h2 {
     text-align: left;
   }
 
-  .sobre h2::after {
+  .sobre h2::after,
+  .contato h2::after {
     margin-left: 0;
   }
 
