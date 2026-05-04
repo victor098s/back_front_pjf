@@ -1,0 +1,120 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* FUNDO DA PÁGINA */
+body {
+  background: linear-gradient(180deg, #0f0f0f, #1c1c1c);
+  color: #ffffff;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* TÍTULO PRINCIPAL */
+.container h1 {
+  font-size: 42px;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+/* SEÇÕES (Quem somos / Missão) */
+.sobre {
+  margin-bottom: 40px;
+}
+
+.sobre h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #00aaff;
+}
+
+.sobre p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cccccc;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* SEÇÃO CONTATO */
+.contato {
+  margin-top: 50px;
+}
+
+.contato h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* FORMULÁRIO */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* INPUT E TEXTAREA */
+.form input,
+.form textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  background-color: #eaeaea;
+  color: #000;
+}
+
+/* TEXTAREA */
+.form textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BOTÃO */
+.form button {
+  padding: 12px 25px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+/* HOVER BOTÃO */
+.form button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .container h1 {
+    font-size: 32px;
+  }
+
+  .sobre h2,
+  .contato h2 {
+    font-size: 22px;
+  }
+
+  .sobre p {
+    font-size: 14px;
+  }
+}
