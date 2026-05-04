@@ -58,9 +58,7 @@ const Busca = () => {
         </div>
       </div>
 
-      <footer className={styles.footer}>
-        © Copy, Todos os direitos reservados
-      </footer>
+
     </div>
   );
 };

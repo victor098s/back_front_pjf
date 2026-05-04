@@ -53,6 +53,8 @@ function App() {
           <Route path="/about" element={<SobreNos />} />
         </Routes>
       </main>
+
+      <footer>&Copy, todos os direitos reservados !</footer>
     </BrowserRouter>
   );
 }
