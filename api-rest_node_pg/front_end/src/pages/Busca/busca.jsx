@@ -1,85 +1,66 @@
 import React, { useState, useEffect } from "react";
-import "./busca.css";
+import styles from "./Busca.module.css";
+import { FaSearch } from "react-icons/fa";
 
-export default function Busca() {
-  const [query, setQuery] = useState("");
+const Busca = () => {
+  const [busca, setBusca] = useState("");
   const [produtos, setProdutos] = useState([]);
-  const [sugestoes, setSugestoes] = useState([]);
+  const [filtrados, setFiltrados] = useState([]);
 
-  // Simulação de API (pode trocar por fetch real)
-  const listaProdutos = [
-    "iPhone 13",
-    "iPhone 14",
-    "Samsung Galaxy S23",
-    "Notebook Dell",
-    "Notebook Gamer",
-    "Teclado Mecânico",
-    "Mouse Gamer",
-    "Fone Bluetooth",
-    "Smart TV 50 polegadas",
-    "Cadeira Gamer"
-  ];
-
+  // BUSCAR DADOS DA API
   useEffect(() => {
-    if (query.length === 0) {
-      setSugestoes([]);
-      return;
-    }
+    fetch("http://localhost:3000/produtos")
+      .then((res) => res.json())
+      .then((data) => {
+        setProdutos(data);
+        setFiltrados(data);
+      })
+      .catch((err) => console.error("Erro ao buscar produtos:", err));
+  }, []);
 
-    const resultados = listaProdutos.filter((item) =>
-      item.toLowerCase().includes(query.toLowerCase())
+  // FILTRO
+  useEffect(() => {
+    const resultado = produtos.filter((produto) =>
+      produto.nome.toLowerCase().includes(busca.toLowerCase())
     );
-
-    setSugestoes(resultados);
-  }, [query]);
-
-  const handleBuscar = () => {
-    setProdutos(sugestoes);
-    setSugestoes([]);
-  };
-
-  const handleSugestaoClick = (item) => {
-    setQuery(item);
-    setProdutos([item]);
-    setSugestoes([]);
-  };
+    setFiltrados(resultado);
+  }, [busca, produtos]);
 
   return (
-    <div className="busca-container">
-      <h1>Busca de Produtos</h1>
+    <div className={styles.page}>
 
-      <div className="barra-busca">
-        <input
-          type="text"
-          placeholder="Buscar produtos..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={handleBuscar}>Buscar</button>
+      <div className={styles.wrapper}>
+        <div className={styles.card}>
+          <h1>Busca de Produtos</h1>
 
-        {sugestoes.length > 0 && (
-          <ul className="sugestoes">
-            {sugestoes.map((item, index) => (
-              <li key={index} onClick={() => handleSugestaoClick(item)}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        )}
+          <div className={styles.inputGroup}>
+            <FaSearch className={styles.icon} />
+            <input
+              type="text"
+              placeholder="Buscar produtos..."
+              value={busca}
+              onChange={(e) => setBusca(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.resultados}>
+            {filtrados.length > 0 ? (
+              filtrados.map((produto) => (
+                <div key={produto.id} className={styles.item}>
+                  <strong>{produto.nome}</strong>
+                  <span>R$ {produto.preco}</span>
+                </div>
+              ))
+            ) : (
+              <p>Nenhum produto encontrado</p>
+            )}
+          </div>
+        </div>
       </div>
 
-      <div className="resultados">
-        {produtos.length > 0 ? (
-          produtos.map((produto, index) => (
-            <div key={index} className="card-produto">
-              <h3>{produto}</h3>
-              <p>Descrição do produto...</p>
-            </div>
-          ))
-        ) : (
-          <p>Nenhum produto encontrado</p>
-        )}
-      </div>
+
     </div>
   );
-}
+};
+
+export default Busca;

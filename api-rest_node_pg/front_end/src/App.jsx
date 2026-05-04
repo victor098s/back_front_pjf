@@ -1,7 +1,7 @@
 import "./App.css";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import SobreNos from "./pages/About/sobrenos";
-import Delivery from "./pages/Delivery/delivery";
+import Busca from "./pages/Busca/busca";
 import Home from "./pages/Home/Home";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
@@ -10,12 +10,13 @@ function App() {
     <BrowserRouter>
       <header>
         <div className="logo">
-          wiss <span>mall</span>
+          <h2>
+            WISS <span>MALL</span>
+          </h2>
         </div>
-
         <div className="nav">
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             Home
@@ -36,22 +37,24 @@ function App() {
           </NavLink>
 
           <NavLink
-            to="/delivery"
+            to="/busca"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            Delivery
+            Busca
           </NavLink>
         </div>
       </header>
 
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/delivery" element={<Delivery />} />
-        <Route path="/about" element={<SobreNos />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/busca" element={<Busca />} />
+          <Route path="/about" element={<SobreNos />} />
+        </Routes>
+      </main>
 
-      <footer>&Copy, Todos os direitos reservados </footer>
+      <footer>&Copy, todos os direitos reservados !</footer>
     </BrowserRouter>
   );
 }
