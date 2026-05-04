@@ -159,6 +159,7 @@ const Cadastro = () => {
 
   return (
     <div className={styles.container}>
+
       <form onSubmit={handleSubmit}>
         <h1 className={styles.titulo}>Cadastre um Produto</h1>
         <label>
