@@ -25,8 +25,12 @@ h1 {
 }
 
 .contato {
-  margin-top: 40px;
+    max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
+
 
 .form {
   display: flex;
