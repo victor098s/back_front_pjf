@@ -24,25 +24,25 @@ function Home() {
           
           <div className={styles.card}>
             <i className="fa-solid fa-phone"></i>
-            <h3>contato</h3>
+            <h3>Contato</h3>
             <span>Fale conosco</span>
           </div>
 
           <div className={styles.card}>
             <i className="fa-solid fa-user"></i>
-            <h3>sobre nos</h3>
+            <h3>Sobre nós</h3>
             <span>Conheça nossa loja</span>
           </div>
 
           <div className={styles.card}>
             <i className="fa-solid fa-motorcycle"></i>
-            <h3>delivery</h3>
-            <span>Receba em casa</span>
+            <h3>Busca</h3>
+            <span>Procure seu produto</span>
           </div>
 
           <div className={styles.card}>
             <i className="fa-solid fa-clipboard-list"></i>
-            <h3>cadastro</h3>
+            <h3>Cadastro</h3>
             <span>Crie sua conta</span>
           </div>
 

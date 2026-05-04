@@ -11,7 +11,7 @@ const SobreNos = () => {
     const dados = { nome, mensagem };
 
     try {
-      await fetch("http://localhost:3000/contato&quot"), {
+      await fetch(`http://localhost:3000/produtos`),{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

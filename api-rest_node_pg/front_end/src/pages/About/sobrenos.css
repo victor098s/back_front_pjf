@@ -1,58 +1,177 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* FUNDO COM IMAGEM */
+body {
+  background: url("https://images.unsplash.com/photo-1556740738-b6a63e27c4df") no-repeat center/cover;
+  min-height: 100vh;
+  color: #eaeaea;
+  position: relative;
+}
+
+/* OVERLAY ESCURO + BLUR */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+/* CONTAINER */
 .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  padding: 70px 20px;
 }
 
-h1 {
+/* TÍTULO */
+.container h1 {
   text-align: center;
-  margin-bottom: 30px;
+  font-size: 44px;
+  margin-bottom: 60px;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
+/* SEÇÕES */
 .sobre {
-  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  align-items: flex-start;
+
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+/* REMOVE LINHA DO ÚLTIMO */
+.sobre:last-of-type {
+  border-bottom: none;
+}
+
+/* TÍTULOS */
 .sobre h2 {
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 17px;
+  color: #bfc7d5;
+  font-weight: 600;
+  text-align: right;
+  letter-spacing: 0.5px;
 }
 
+/* LINHA DISCRETA */
+.sobre h2::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: rgba(255,255,255,0.3);
+  margin-top: 6px;
+  margin-left: auto;
+}
+
+/* TEXTO */
 .sobre p {
-  color: #555;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #d6d6d6;
+  max-width: 600px;
 }
 
+/* CONTATO */
 .contato {
-  margin-top: 40px;
+  margin-top: 70px;
+  text-align: center;
 }
 
+/* TÍTULO CONTATO */
+.contato h2 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+/* FORM */
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
+/* INPUTS */
 .form input,
 .form textarea {
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 16px;
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
+  transition: 0.2s;
 }
 
+/* PLACEHOLDER */
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #aaa;
+}
+
+/* FOCO */
+.form input:focus,
+.form textarea:focus {
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* TEXTAREA */
 .form textarea {
-  min-height: 120px;
-  resize: vertical;
+  height: 120px;
+  resize: none;
 }
 
+/* BOTÃO */
 .form button {
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
+  margin-top: 10px;
+  padding: 12px 26px;
+  border-radius: 6px;
   border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 14px;
   cursor: pointer;
+  transition: 0.25s;
 }
 
+/* HOVER */
 .form button:hover {
-  background-color: #1e7e34;
+  background: rgba(255,255,255,0.25);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .sobre {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sobre h2 {
+    text-align: left;
+  }
+
+  .sobre h2::after {
+    margin-left: 0;
+  }
+
+  .container h1 {
+    font-size: 32px;
+  }
 }
