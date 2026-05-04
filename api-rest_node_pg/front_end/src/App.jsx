@@ -10,12 +10,13 @@ function App() {
     <BrowserRouter>
       <header>
         <div className="logo">
-          wiss <span>mall</span>
+          <h2>
+            WISS <span>MALL</span>
+          </h2>
         </div>
-
         <div className="nav">
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             Home
@@ -44,14 +45,14 @@ function App() {
         </div>
       </header>
 
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/delivery" element={<Delivery />} />
-        <Route path="/about" element={<SobreNos />} />
-      </Routes>
-
-      <footer>&Copy, Todos os direitos reservados </footer>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/about" element={<SobreNos />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }
