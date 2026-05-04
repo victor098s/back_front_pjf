@@ -10,7 +10,7 @@
 
 .app {
   height: 100vh;
-  background: url('/img/loja.jpg') no-repeat center center/cover;
+  background: url('../../assets/loja.jpg') no-repeat center center/cover;
   background-attachment: fixed;
   color: white;
   position: relative;
