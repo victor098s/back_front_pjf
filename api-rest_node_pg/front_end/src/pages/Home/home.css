@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
+
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -5,16 +8,16 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-body {
+.app {
   height: 100vh;
-  background: url('img/loja.jpg') no-repeat center center/cover;
+  background: url('/img/loja.jpg') no-repeat center center/cover;
   background-attachment: fixed;
   color: white;
   position: relative;
 }
 
-/* overlay IGUAL ao modelo */
-body::before {
+/* OVERLAY */
+.app::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -46,7 +49,7 @@ header {
   opacity: 0.35;
 }
 
-/* MENU */
+/* NAV */
 nav a {
   margin-left: 30px;
   text-decoration: none;
@@ -54,7 +57,6 @@ nav a {
   font-size: 14px;
 }
 
-/* botão contato */
 .btn {
   border: 1px solid #ddd;
   padding: 8px 18px;
@@ -73,7 +75,7 @@ nav a {
   padding-top: 40px;
 }
 
-/* TÍTULO */
+/* TITLE */
 .hero h1 {
   font-size: 95px;
   font-weight: 200;
@@ -84,7 +86,7 @@ nav a {
   opacity: 0.35;
 }
 
-/* LINHA */
+/* DIVIDER */
 .divider {
   display: flex;
   align-items: center;
@@ -102,7 +104,7 @@ nav a {
   font-size: 14px;
 }
 
-/* TEXTO */
+/* TEXT */
 .hero p {
   text-align: center;
   color: #eee;
